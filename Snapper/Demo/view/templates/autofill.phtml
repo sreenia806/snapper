@@ -1,0 +1,26 @@
+<div class="formcontainer">
+   <div class="field" id="delivery-address-box">
+     <label for="delivery_address" class="label"> <span>Delivery Address </span> </label>
+       <div class="input-box">
+           <input type="text" name="delivery_address" class="input-text" id="autocomplete" placeholder="Enter Delivery Address here." title="Enter Store Address here." autocomplete="off">
+       </div>
+   </div>
+</div>
+<script>
+require.config({
+    map: {
+        '*': {
+            'googleMapPlaceLibrary': 'https://maps.googleapis.com/maps/api/js?key=<?php echo $block->getGoogleApiKey()?>&v=3.exp&libraries=places'
+        }
+    }
+ });
+ </script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "autofill": {
+                "apikey": "<?php echo $block->getGoogleApiKey()?>",
+            }
+        }
+    }
+</script>
