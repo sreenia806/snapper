@@ -1,0 +1,18 @@
+<?php if ($block->isEnabled()) : ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $block->getApiKey(); ?>&libraries=places&callback=notifySubscribers"
+            async
+            defer></script>
+    <script>
+        require(['Demo/model/address/addressFieldsMap'], function (addressFieldsMap) {
+            addressFieldsMap.setMap(<?php echo json_encode($block->getFieldsMap());?>);
+        });
+    </script>
+
+    <script>
+        var notifySubscribers = function () {
+            require(['Demo/model/apiLoadListener'], function (loadListener) {
+                loadListener.isGoogleApiLoaded(true);
+            })
+        };
+    </script>
+<?php endif; ?>
